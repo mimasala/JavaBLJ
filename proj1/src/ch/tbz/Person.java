@@ -6,51 +6,51 @@ import java.time.temporal.ChronoUnit;
 
 
 public class Person {
-    private String vorname;
-    private String nachname;
-    private String geburtstag;
+    private String firstname;
+    private String lastname;
+    private String birthday;
     private boolean bms;
     private String bff;
 
-    public Person(){
+    public Person() {
 
     }
 
 
-    public Person(String vorname, String nachname, String geburtstag, boolean bms, String bff){
-        this.vorname = vorname;
-        this.nachname = nachname;
-        this.geburtstag = geburtstag;
+    public Person(String firstname, String lastname, String birthday, boolean bms, String bff) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.birthday = birthday;
         this.bms = bms;
         this.bff = bff;
 
     }
 
-    public Person(Person person){
-        this.vorname = person.vorname;
-        this.nachname = person.nachname;
-        this.geburtstag = person.geburtstag;
+    public Person(Person person) {
+        this.firstname = person.firstname;
+        this.lastname = person.lastname;
+        this.birthday = person.birthday;
         this.bms = person.bms;
         this.bff = person.bff;
 
     }
 
-    public void printPerson(){
-        System.out.println("hello my name is "+vorname+" "+nachname+" and my birthdate is "+geburtstag+" me going to BMS is "+bms+" and my best friend is "+bff);
+    public void printPerson() {
+        System.out.println("hello my name is " + firstname + " " + lastname + " and my birthdate is " + birthday + " me going to BMS is " + bms + " and my best friend is " + bff);
     }
 
 
-    public void getFullName(){
-        System.out.println(vorname + " " + nachname);
+    public void getFullName() {
+        System.out.println(firstname + " " + lastname);
     }
 
-    public void looseFriend(){
+    public void looseFriend() {
         bff = null;
     }
-    public void calcDaysToBirthday (){
-        String geburtstag = "2022-01-27";
 
-        LocalDate dt = LocalDate.parse(geburtstag);
+    public void calcDaysToBirthday() {
+
+        LocalDate dt = LocalDate.parse(birthday);
         LocalDate birthday = LocalDate.of(dt.getYear(), dt.getMonthValue(), dt.getDayOfMonth());
         LocalDate today = LocalDate.now();
         LocalDate nextBDay = birthday.withYear(today.getYear());
@@ -58,41 +58,42 @@ public class Person {
         if (nextBDay.isBefore(today) || nextBDay.isEqual(today)) {
             nextBDay = nextBDay.plusYears(1);
         }
+
         Period p = Period.between(today, nextBDay);
         long p2 = ChronoUnit.DAYS.between(today, nextBDay);
 
-        if (p2 == 365){
+        if (p2 == 365) {
             System.out.println("Alles gute zum Geburtstag!!!!");
-        }else if (p2 == 1){
+        } else if (p2 == 1) {
             System.out.println("Noch einen Tag bis zu deinem Geburtstag ;)");
-        }else{
+        } else {
             System.out.println("Noch " + p2 + " Tage bis zu deinem Geburtstag ;)");
         }
     }
 
     //getters and setters
-    public String getVorname() {
-        return vorname;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setVorname(String vorname) {
-        this.vorname = vorname;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getNachname() {
-        return nachname;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setNachname(String nachname) {
-        this.nachname = nachname;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public String getGeburtstag() {
-        return geburtstag;
+    public String getBirthday() {
+        return birthday;
     }
 
-    public void setGeburtstag(String geburtstag) {
-        this.geburtstag = geburtstag;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
     public boolean isBms() {
@@ -111,8 +112,8 @@ public class Person {
         this.bff = bff;
     }
 
-    public String getBffName(){
-        String bestfriendnd = bff;
+    public String getBffName() {
+        String bestfriend = bff;
         return bff;
     }
 
